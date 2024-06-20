@@ -1,0 +1,225 @@
+/* Estilo para ocultar el encabezado y el pie de página al imprimir */
+@media print {
+    /* Oculta el encabezado */
+    @page {
+        margin-top: 0;
+    }
+    /* Oculta el pie de página */
+    @page {
+        margin-bottom: 0;
+    }
+
+    #boton-imprimir {
+        display: none;
+    }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-principal);
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+#boton-imprimir {
+    padding: 1.5rem;
+    background-color: #0DACF0;
+    color: #fff;
+    border-radius: 5px;
+    border: none;    
+    position: fixed;   
+    top: 10PX;
+    left: 10PX;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: background-color 1s ease;    
+}
+
+#boton-imprimir:hover {
+	 background-color: #08A0C5;
+}
+
+.texto-centrar {  
+  text-align: center;  
+}
+
+.texto-grande {
+  font-size: 1.4rem;  
+  text-transform: uppercase;  
+}
+
+.separador {
+	margin: 2.5rem 0;
+	border: 1px dashed #000;
+}
+
+.contenedor-recibo {
+	margin-top: 2rem;
+    width: 73.3rem;
+}
+
+.header-recibo {
+  display: grid;
+  grid-template-columns: 1fr 33.3rem 1fr;
+  align-items: center;
+  
+  gap: 2rem;
+  
+  text-align: center;
+}
+
+.header-recibo__QR {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.header-recibo__QR p {
+  margin-top: .3rem;
+  text-align: center;
+}
+
+.logo__img {
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
+.info__titulo {
+  font-size: 1.8rem;
+}
+
+.info__texto {
+  font-size: 1rem;
+}
+
+/**/
+.recibo__info {
+  padding: 2rem 4rem;
+}
+
+.recibo__numero {  
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+}
+
+.numero__datos {
+  padding: 1rem;  
+  border-radius: 1rem;
+  border: 1px solid black; 
+  text-align: center;
+}
+
+.info__item {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.info__item p {
+	margin-right: .5rem; 
+}
+
+.item__datos {
+  display: flex;
+  flex: 2;
+}
+
+.info__item .item__datos {
+  min-width: 0;
+}
+
+.info__item:nth-child(4) .item__datos {
+  flex: 1.5;
+}
+
+.info__item:nth-child(4) .item__datos:nth-child(2){
+  flex: 1;
+}
+
+.info__item:nth-child(4) .item__datos:nth-child(3) {
+  flex: 2;
+}
+
+.item__datos:nth-child(2) {
+  padding-left: .5rem;
+  flex: 1.1;
+}
+
+.item__datos:nth-child(3) {
+  padding-left: .5rem;
+  flex: 1.1;
+}
+
+.datos__negrita {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.datos__linea {
+  flex-grow: 1;
+  border-bottom: 1px solid #000;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recibo__firmas {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.firmas_firma {
+  text-align: center;
+  border-top: 1px solid #000;
+  flex-grow: 1;
+  flex: 2;
+  margin: 0 1rem;
+}
+
+.firmas__QR {
+  flex: 1;
+}
+
+.recibo-terminos {
+  margin: 2rem; 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.recibo-terminos h3 {
+  margin-bottom: 1rem;
+}

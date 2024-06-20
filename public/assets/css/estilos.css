@@ -1,0 +1,226 @@
+:root {
+    --color-primario: #1b263b;
+    --color-secundario: #415a77;
+    --color-terc: #778da9;
+    --color-cuato: #e0e1dd;
+    --color-quto: #0d1b2a;
+
+
+    --color-base: #2b2d42;
+    --color-gray: #8d99ae;
+    --color-gray-light: #edf2f4;
+    --color-red-ligth: #ef233c;
+    --color-red-dark: #d90429;
+    --color-dark: #212529;
+}
+body{
+    background-color: #e0e1dd;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece el mínimo de altura del body para ocupar toda la ventana visible */
+    margin: 0;
+}
+
+.content {
+    flex: 1; /* Hace que el contenido ocupe todo el espacio disponible */
+    /* Puedes añadir más estilos según tu diseño */
+}
+section {
+    padding: 100px 5px;
+    overflow: hidden;
+}
+
+.title h3{
+    text-align: center;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    /*font-weight: 600;*/
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    text-align: center;
+    color: var(--color-base);
+    text-transform: uppercase;
+}
+
+.section-title h2:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100px;
+    height: 5px;
+    background: var(--color-red-dark);
+    left: 0;
+    right: 0;
+    bottom: 110%;
+    margin: auto;
+    border-radius: 1.5rem;
+}
+
+.section-title span{
+    color: var(--color-red-dark);
+}
+
+.subtitulo{
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    color: var(--color-base);
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.subtitulo h3:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100px;
+    height: 5px;
+    background: var(--color-red-dark);
+    left: 0;
+    right: 0;
+    bottom: 25%;
+    margin: auto;
+    border-radius: 1.5rem;
+}
+
+.subtitulo h6:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 35px;
+    height: 5px;
+    background: var(--color-red-dark);
+    left: 0;
+    right: 0;
+    bottom: 25%;
+    margin: auto;
+    border-radius: 1.5rem;
+}
+
+
+
+.btn-flotante {
+    font-size: 2rem;
+    /* Cambiar el tamaño de la tipografia */
+    font-weight: bold;
+    /* Fuente en negrita o bold */
+    color: #ffffff;
+    /* Color del texto */
+    border-radius: 5px;
+    /* Borde del boton */
+    letter-spacing: 2px;
+    /* Espacio entre letras */
+    background-color: var(--color-dark);
+    /* Color de fondo */
+    padding: 18px 30px;
+    /* Relleno del boton */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    transition: all 300ms ease 0ms;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    text-decoration: none;
+}
+
+.btn-flotante:hover {
+    background-color: var(--color-base);
+    transform: translateY(-7px);
+}
+
+@media only screen and (max-width: 600px) {
+    .btn-flotante {
+        font-size: 14px;
+        padding: 12px 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.curved {
+    position: relative;
+    background: #2c3e50;
+    height: 50vh;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+  }
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; 
+}
+
+.gallery-hover img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.gallery-hover img:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+.nav-logo{
+    max-width: 55px;
+}
+#queOfrecemos .card{
+    transition: none !important;
+    min-height: 200px;
+}
+#queOfrecemos .card:hover{
+    transform: none !important;
+}
+
+
+#contacto.card {
+    min-height: 105px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#direccion .card:hover{
+    transform: none !important;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info {
+    text-align: center;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit; 
+}
+
+.rounded-container {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    background-color: var(--color-gray-light);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.rounded-container img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width: 576px) {
+    .logo-img{
+        max-width: 60vw;
+    }
+}
