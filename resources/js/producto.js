@@ -1,7 +1,6 @@
-import { alertaInfo, confirSave, eliminar } from "./alertas";
-import Swal from 'sweetalert2';
-document.getElementById('Form-productos').addEventListener("submit", function(e) {
-    e.preventDefault(); // Evita el envío natural del formulario
+
+$('#guardarPro').click(function () {
+    preventDefault();
     confirSave("¿Los datos capturados, son correctos?", function () {
         saveProducto();
     });

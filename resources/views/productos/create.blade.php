@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit" id="guardarPro">Registrar</button>
+                    <button class="btn btn-primary" type="button" id="guardarPro">Registrar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </form>
             </div>

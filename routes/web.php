@@ -32,7 +32,6 @@ Route::middleware(['auth', 'verified', 'checkUserStatus'])->group(function () {
     });
     
     
-    
     Route::middleware('auth', 'verified')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -41,6 +40,9 @@ Route::middleware(['auth', 'verified', 'checkUserStatus'])->group(function () {
 
     Route::middleware('auth', 'verified')->group(function () {
         Route::get('/categorias/tabla', [categoriasController::class, 'index'])->name('categorias.index');
+        Route::get('/categorias/create', [categoriasController::class, 'create'])->name('categorias.create');
+        Route::post('/categorias/store', [categoriasController::class, 'store'])->name('categorias.store');
+        Route::get('/categorias/edi/{id}', [categoriasController::class, 'edit'])->name('categorias.edit');
         
     });
     

@@ -32,7 +32,13 @@
               <td>{{$producto->precio_rebajado}}</td>
               <td>{{$producto->cantidad}}</td>
               <td>{{$producto->categoria->categoria}}</td>
-              <td>img</td>
+              <td>
+                @if ($producto->foto)
+                <img src="{{ asset('storage/' . $producto->foto) }}" width="100" height="100">
+            @else
+                Sin imagen
+            @endif
+              </td>
               <td>
                 <button type="button" data-func="dt-add" class="btn btn-success btn-xs dt-add"
                   data-id="{{$producto->id}}" id="btn_delete_{{$producto->id}}">
@@ -56,4 +62,5 @@
 
 
   {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+  <script src="{{asset('assets/js/producto.js')}}"></script>
 </x-app-layout>

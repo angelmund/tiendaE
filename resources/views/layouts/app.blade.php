@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Tienda') }}</title>
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
     <!-- jQuery -->
-    {{--  <script src="{{ asset('DataTables/jQuery-3.7.0/jquery-3.7.0.min.js') }}"></script>  --}}
+    <script src="{{ asset('DataTables/jQuery-3.7.0/jquery-3.7.0.min.js') }}"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('bootstrap-5.2.3-dist/css/bootstrap.min.css') }}">
@@ -22,8 +22,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-------- moment ---------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="{{asset('assets/js/alertas.js')}}"></script>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('sweetalert2/sweetalert2.min.css') }}">

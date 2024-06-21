@@ -54,9 +54,9 @@ class productosController extends Controller
             if ($request->hasFile('foto')) {
                 $nuevoNombreFotoProducto = $producto->id . "_foto_producto." . $request->file('foto')->getClientOriginalExtension();
                 $producto->foto = $request->file('foto')->storeAs('images/photo', $nuevoNombreFotoProducto, 'public');
-                $producto->save(); // Guardar nuevamente para actualizar la información de la imagen.
+                $producto->save(); 
             }
-
+            // dd($producto);
             DB::commit();
             return response()->json([
                 'mensaje' => 'Producto guardado',
@@ -65,7 +65,7 @@ class productosController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json([
-                'mensaje' => 'Error al guardar' . $e->getMessage(),
+                'mensaje' => 'Error al guardar',
                 'idnotificacion' => 2
             ]);
         }
