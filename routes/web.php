@@ -43,6 +43,8 @@ Route::middleware(['auth', 'verified', 'checkUserStatus'])->group(function () {
         Route::get('/categorias/create', [categoriasController::class, 'create'])->name('categorias.create');
         Route::post('/categorias/store', [categoriasController::class, 'store'])->name('categorias.store');
         Route::get('/categorias/edi/{id}', [categoriasController::class, 'edit'])->name('categorias.edit');
+        Route::post('/categorias/update/{id}', [categoriasController::class, 'actualizar'])->name('categorias.update');
+        Route::post('/categorias/delete/{id}', [categoriasController::class, 'eliminar'])->name('categorias.eliminar');
         
     });
     

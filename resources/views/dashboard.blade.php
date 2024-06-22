@@ -34,15 +34,17 @@
               <td>{{$producto->categoria->categoria}}</td>
               <td>
                 @if ($producto->foto)
-                <!-- Asumiendo que 'foto' contiene el nombre del archivo dentro de la carpeta 'productos' -->
+              
                 <img src="{{ asset('/' . $producto->foto) }}" width="90" height="90">
                 @else
                 Sin imagen
                 @endif
               </td>
               <td>
-                <button type="button" data-func="dt-add" class="btn btn-success btn-xs dt-add"
-                  data-id="{{$producto->id}}" id="btn_delete_{{$producto->id}}">
+                <button type="button" data-func="dt-add" class="btn btn-success btn-xs dt-add" data-bs-toggle="modal"
+                  data-bs-target="#productosEdit{{$producto->id}}" data-id="{{$producto->id}}"
+                  id="btn_delete_{{$producto->id}}"
+                  data-remote="{{route('productos.edit', ['id' => $producto->id])}}">
                   <i class='right fas fa-pen'></i>
                 </button>
                 <button type="button" data-func="dt-add" class="btn btn-danger btn-xs dt-add eliminarsala"
@@ -53,6 +55,7 @@
 
             </tr>
             @include('productos.create')
+            @include('productos.edit')
             @endforeach
 
           </tbody>

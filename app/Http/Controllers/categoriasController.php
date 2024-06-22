@@ -97,6 +97,7 @@ class categoriasController extends Controller
                 $categoria = Categoria::find($id);
                 $categoria->categoria = request('nombre');
                 $categoria->save();
+                // dd($categoria);
                 DB::commit();
                 return response()->json([
                     'mensaje' => 'Categoría actualizada',
@@ -113,4 +114,29 @@ class categoriasController extends Controller
             return redirect()->to('/');
         }
     }
+
+    public function eliminar($id){
+        if (Auth::check()) {
+            try {
+                DB::beginTransaction();
+                $categoria = Categoria::find($id);
+                dd($categoria);
+                $categoria->delete();
+                DB::commit();
+                return response()->json([
+                    'mensaje' => 'Categoría eliminada',
+                    'idnotificacion' => 1
+                ]);
+            } catch (\Exception $e) {
+                DB::rollback();
+                return response()->json([
+                    'mensaje' => 'Error al eliminar',
+                    'idnotificacion' => 2
+                ]);
+            };
+        } else {
+            return redirect()->to('/');
+        }
+    }
+
 }

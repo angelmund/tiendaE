@@ -69,22 +69,24 @@ async function saveCategoria() {
     }
 }
 
-
-$('#actualizarCategoria').click(function (event) {
-    console.log("Actualiza");
+$('.actualizar').click(function (event) {
     event.preventDefault();
+    const id = $(this).data('id');
+    // console.log(id);
     confirSave("¿Los datos capturados, son correctos?", function () {
-        updateCategoria();
-    });
+        // Encuentra el formulario más cercano al botón que se presionó
+        const formElement = $(this).closest('.modal').find('form')[0];
+        updateCategoria(id, formElement); // Pasar el ID y el formulario como argumentos a la función
+    }.bind(this)); // Enlazar el botón que se presionó con la función de confirmación
 });
 
-async function updateCategoria() {
+async function updateCategoria(id, formElement) {
     const url = $('#url').val();
-    const id = $('#id').val();
-    try {
-        const formElement = document.getElementById('form-actualizarCa');
-        const formData = new FormData(formElement);
+    // console.log(id);
+    const formData = new FormData(formElement); // Esta es la instancia correcta de FormData
+    // console.log(formData);
 
+    try {
         const response = await fetch(url + '/categorias/update/' + id, {
             method: 'POST',
             mode: 'cors',
@@ -93,6 +95,77 @@ async function updateCategoria() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             body: formData
+        });
+
+        const data = await response.json();
+        switch (data.idnotificacion) {
+            case 1:
+                Swal.fire({
+                    title: data.mensaje,
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true
+                });
+                // Esperar un breve período de tiempo antes de recargar la página
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1000); // Espera 1 segundo
+
+                break;
+
+            case 2:
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: data.mensaje
+                });
+                break;
+            case 3:
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: data.mensaje
+                });
+                break;
+            case 3:
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: data.mensaje
+                });
+                break;
+            default:
+                Swal.fire({
+                    icon: "info",
+                    title: "Info...",
+                    text: data.mensaje
+                });
+        }
+
+    } catch (error) {
+        console.error("Error al procesar la solicitud:", error);
+    }
+}
+
+$('.eliminarCategoria').click(function (event) {
+    event.preventDefault();
+    const id = $(this).data('id');
+    eliminar("¿Estás seguro de eliminar el registro?", function () {
+        deleteCategoria(id);
+    }.bind(this));
+});
+
+async function deleteCategoria(id) {
+    const url = $('#url').val();
+    try {
+        const response = await fetch(url + '/categorias/delete/' + id, {
+            method: 'POST',
+            mode: 'cors',
+            redirect: 'manual',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
 
         const data = await response.json();
