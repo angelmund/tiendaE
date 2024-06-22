@@ -53,7 +53,7 @@ class productosController extends Controller
 
             if ($request->hasFile('foto')) {
                 $nuevoNombreFotoProducto = $producto->id . "_foto_producto." . $request->file('foto')->getClientOriginalExtension();
-                $producto->foto = $request->file('foto')->storeAs('images/photo', $nuevoNombreFotoProducto, 'public');
+                $producto->foto = $request->file('foto')->storeAs('fotografias', $nuevoNombreFotoProducto, 'public');
                 $producto->save(); 
             }
             // dd($producto);

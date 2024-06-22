@@ -58,8 +58,8 @@ return [
 
         'fotografias' => [
             'driver' => 'local',
-            'root' => storage_path('app/fotografias'),
-            'url' => env('APP_URL').'/fotos-de-usuarios/',
+            'root' => storage_path('app/public/fotografias'),
+            'url' => env('APP_URL').'/fotografias/',
             'visibility' => 'public',
         ],
 
@@ -77,7 +77,7 @@ return [
     */
 
     'links' => [
-        public_path('fotos-de-usuarios') => storage_path('app/fotografias'),
+        public_path('fotografias') => storage_path('app/public/fotografias'),
     ],
 
 ];

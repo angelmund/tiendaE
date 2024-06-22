@@ -91,14 +91,14 @@ function mostrar() {
 
 
 $(".altaCliente").hide();
-mostrarCarrito();
+// mostrarCarrito();
 
 function mostrarCarrito() {
     if (localStorage.getItem("productos") != null) {
         let array = JSON.parse(localStorage.getItem('productos'));
         if (array.length > 0) {
             $.ajax({
-                url: 'ajax.php',
+                url: '',
                 type: 'POST',
                 async: true,
                 data: {

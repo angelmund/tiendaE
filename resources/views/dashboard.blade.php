@@ -28,16 +28,17 @@
             <tr>
               <td>{{$producto->nombre}}</td>
               <td>{{$producto->descripcion}}</td>
-              <td>{{$producto->precio_normal}}</td>
-              <td>{{$producto->precio_rebajado}}</td>
+              <td>${{ number_format($producto->precio_normal, 0, '.', ',') }}</td>
+              <td>${{ number_format($producto->precio_rebajado, 0, '.', ',') }}</td>
               <td>{{$producto->cantidad}}</td>
               <td>{{$producto->categoria->categoria}}</td>
               <td>
                 @if ($producto->foto)
-                <img src="{{ asset('storage/' . $producto->foto) }}" width="100" height="100">
-            @else
+                <!-- Asumiendo que 'foto' contiene el nombre del archivo dentro de la carpeta 'productos' -->
+                <img src="{{ asset('/' . $producto->foto) }}" width="90" height="90">
+                @else
                 Sin imagen
-            @endif
+                @endif
               </td>
               <td>
                 <button type="button" data-func="dt-add" class="btn btn-success btn-xs dt-add"
