@@ -30,11 +30,8 @@
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('landing')}}">
-                <!-- <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div> -->
-                <div class="sidebar-brand-text mx-3">ASP <sup>Publicidad</sup></div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
+                <div class="sidebar-brand-text mx-3"> ASP Publicidad </div>
             </a>
 
             <!-- Divider -->
@@ -42,9 +39,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('landing')}}">
+                <a class="nav-link" href="{{route('tienda')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Menús</span></a>
+                    <span>Tienda</span></a>
             </li>
 
             <!-- Divider -->
