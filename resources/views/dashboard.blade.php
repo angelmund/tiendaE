@@ -20,7 +20,7 @@
               <th>Cantidad</th>
               <th>Categoria</th>
               <th>Imagen</th>
-              <th></th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
