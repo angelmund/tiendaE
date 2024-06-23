@@ -77,7 +77,7 @@
                     <div class="card h-100">
                         <!-- Product image-->
                         @if ($producto->foto)
-                        <!-- Asumiendo que 'foto' contiene el nombre del archivo dentro de la carpeta 'productos' -->
+                       
                         <img src="{{ asset('/' . $producto->foto) }}" alt="...">
                         @else
                         Sin imagen
@@ -87,6 +87,7 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{$producto->nombre}}</h5>
+                                <input type="hidden" id="id">{{$producto->id}}</input>
                                 <!-- Product price-->
                                 {{$producto->descripcion}}
                                 <br>
