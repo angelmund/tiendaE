@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Tienda') }}</title>
+    <title>{{ config('app.name', 'ASP') }}</title>
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
