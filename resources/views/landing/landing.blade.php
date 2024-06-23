@@ -18,8 +18,13 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-
+<style>
+    .text-justify{
+        text-align: justify
+    }
+</style>
 <body>
 
     <nav id="header" class="navbar navbar-expand-lg bg-body-tertiary sticky-top " data-bs-spy="scroll">
@@ -65,34 +70,41 @@
         </div>
     </header>
 
-    <section id="nosotros" class="container-fluid mt-4">
+    <section id="nosotros" class="container-fluid mt-4" data-aos="fade-up"  data-aos-duration="1000" >
         <div class="section-title">
             <h2>Nosotros</h2>
         </div>
 
         <div class="row ">
-            <div class="col-12 col-md-4  d-flex justify-content-center align-items-center">
-
+            <div class="col-12 col-md-4  d-flex justify-content-center align-items-center"  data-aos="fade-right"  data-aos-duration="1000">
                 <div class="container">
-                    <p class="fs-5">En ASP Publicidad, somos especialistas en brindar soluciones innovadoras y de alta calidad para todas tus necesidades de rotulación, estampados, cerigrafía y publicidad. Con años de experiencia en el sector, nos hemos consolidado como un referente en la impresión de lonas y folletos, ofreciendo a nuestros clientes productos y servicios que destacan por su excelencia y atención al detalle.</p>
+                    <div class=" subtitulo">
+                        <h6>¿Quienes somos?</h6>
+                    </div>
+                    <p class="fs-5 text-justify">En ASP Publicidad, somos especialistas en brindar soluciones innovadoras y de alta calidad para todas tus necesidades de rotulación, estampados, cerigrafía y publicidad. Con años de experiencia en el sector, nos hemos consolidado como un referente en la impresión de lonas y folletos, ofreciendo a nuestros clientes productos y servicios que destacan por su excelencia y atención al detalle.</p>
                 </div>
             </div>
 
-            <div class="col-12 col-md-4 d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-4 d-flex justify-content-center align-items-center"  data-aos="fade-up"  data-aos-duration="1000">
 
                 <div class="container">
                     <div class="text-center mb-2">
                         <img src="{{asset('images/logoASP.png')}}" alt="" class="logo-img">
                     </div>
-                    <p class="fs-5"> Nuestro equipo de profesionales apasionados y dedicados trabaja con tecnología de vanguardia para asegurarse de que cada proyecto cumpla con los más altos estándares de calidad. Desde la conceptualización hasta la entrega final, nos esforzamos por superar las expectativas de nuestros clientes, proporcionando resultados que no solo satisfacen sus necesidades, sino que también potencian la visibilidad y el impacto de sus marcas.</p>
+                    <div class=" subtitulo mt-5">
+                        <h6>Nuestro equipo</h6>
+                    </div>
+                    <p class="fs-5 text-justify"> Nuestro equipo de profesionales apasionados y dedicados trabaja con tecnología de vanguardia para asegurarse de que cada proyecto cumpla con los más altos estándares de calidad. Desde la conceptualización hasta la entrega final, nos esforzamos por superar las expectativas de nuestros clientes, proporcionando resultados que no solo satisfacen sus necesidades, sino que también potencian la visibilidad y el impacto de sus marcas.</p>
                 </div>
             </div>
 
-            <div class="col-12 col-md-4 d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-4 d-flex justify-content-center align-items-center"  data-aos="fade-left"  data-aos-duration="1000">
 
                 <div class="container">
-
-                    <p class="fs-5">En ASP Publicidad, entendemos que cada cliente es único, por eso ofrecemos soluciones personalizadas y asesoramiento experto para ayudarte a elegir las mejores opciones para tu negocio. Ya sea que necesites rotulación creativa, estampados personalizados, impresiones precisas o campañas publicitarias efectivas, estamos aquí para ayudarte a destacar y alcanzar tus objetivos.</p>
+                    <div class=" subtitulo">
+                        <h6>Nuestro servicio</h6>
+                    </div>
+                    <p class="fs-5 text-justify">En ASP Publicidad, entendemos que cada cliente es único, por eso ofrecemos soluciones personalizadas y asesoramiento experto para ayudarte a elegir las mejores opciones para tu negocio. Ya sea que necesites rotulación creativa, estampados personalizados, impresiones precisas o campañas publicitarias efectivas, estamos aquí para ayudarte a destacar y alcanzar tus objetivos.</p>
                 </div>
             </div>
         </div>
@@ -107,7 +119,7 @@
 
         <div class="row  d-flex justify-content-center align-items-center">
 
-            <div class="col-lg-4">
+            <div class="col-lg-4"  data-aos="fade-down">
                 <div class="rounded-container container">
                     <img src="{{asset('images/impresion.png')}}" alt="">
                 </div>
@@ -115,23 +127,23 @@
                 <p>Ofrecemos servicios de impresión de alta calidad para todas sus necesidades, desde folletos y tarjetas de presentación hasta posters y materiales promocionales.</p>
             </div>
 
-            <div class="col-lg-4">
-                <div class="rounded-container container">
+            <div class="col-lg-4" data-aos="fade-down"  data-aos-duration="1000">
+                <div class="rounded-container container" >
                     <img src="{{asset('images/rotulo.png')}}" alt="">
                 </div>
                 <h2 class="fw-normal">Rótulos</h2>
                 <p>Diseñamos y fabricamos rótulos personalizados para negocios y eventos, utilizando materiales duraderos y técnicas de impresión avanzadas para garantizar una excelente visibilidad.</p>
             </div>
 
-            <div class="col-lg-4">
-                <div class="rounded-container container">
+            <div class="col-lg-4" data-aos="fade-down"  data-aos-duration="1000">
+                <div class="rounded-container container" >
                     <img src="{{asset('images/folleto.png')}}" alt="">
                 </div>
                 <h2 class="fw-normal">Folletos</h2>
                 <p>Creación de folletos atractivos y profesionales que capturan la esencia de su mensaje y ayudan a promocionar sus productos o servicios de manera efectiva.</p>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4" data-aos="fade-up"  data-aos-duration="1000">
                 <div class="rounded-container container">
                     <img src="{{asset('images/camisetas.png')}}" alt="">
                 </div>
@@ -139,7 +151,7 @@
                 <p>Creamos camisetas personalizadas con serigrafía de alta calidad, ideales para promocionar su marca o evento especial.</p>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4" data-aos="fade-up"  data-aos-duration="1000">
                 <div class="rounded-container container">
                     <img src="{{asset('images/vinilos.png')}}" alt="">
                 </div>
@@ -147,7 +159,7 @@
                 <p>Diseñamos y producimos vinilos decorativos para paredes, ventanas y vehículos, ofreciendo soluciones creativas para su espacio.</p>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4" data-aos="fade-up"  data-aos-duration="1000">
                 <div class="rounded-container container">
                     <img src="{{asset('images/mas_servicios.png')}}" alt="">
                 </div>
@@ -159,7 +171,7 @@
         </div>
     </section>
 
-    <section id="nuestroTrabajo" class="container">
+    <section id="nuestroTrabajo" class="container" data-aos="fade-up"  data-aos-duration="1000">
         <div class="row">
             <div class="col-12 col-md-12 gallery-hover">
                 <div class="gallery row">
@@ -202,7 +214,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contacto" class="container">
+    <section id="contacto" class="container" data-aos="fade-up"  data-aos-duration="1000">
 
         <div class="section-title">
             <h2>Contacto</h2>
@@ -242,11 +254,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Core theme JS-->
     <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
+    <script>
+        AOS.init();
+    </script>
 
     
 </body>
