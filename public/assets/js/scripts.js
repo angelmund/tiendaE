@@ -45,9 +45,9 @@ $(document).ready(function () {
         mostrar();
     });
 
-    $('#btnCarrito').click(function (e) {
-        $('#btnCarrito').attr('href', 'carrito.php');
-    });
+    // $('#btnCarrito').click(function (e) {
+    //     $('#btnCarrito').attr('href', '/ASP/tienda/carrito');
+    // });
 
     $('#btnVaciar').click(function () {
         localStorage.removeItem("productos");

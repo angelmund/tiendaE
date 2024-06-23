@@ -20,4 +20,12 @@ class tiendavirtualController extends Controller
         }
     
     }
+
+    public function carrito(){
+        if (Auth::check()) {
+            return View::make('store.carrito');
+        } else {
+            return redirect()->to('/');
+        }
+    }
 }

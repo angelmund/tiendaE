@@ -120,7 +120,7 @@ class categoriasController extends Controller
             try {
                 DB::beginTransaction();
                 $categoria = Categoria::find($id);
-                dd($categoria);
+                // dd($categoria);
                 $categoria->delete();
                 DB::commit();
                 return response()->json([

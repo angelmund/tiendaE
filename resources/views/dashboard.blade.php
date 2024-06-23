@@ -47,7 +47,7 @@
                   data-remote="{{route('productos.edit', ['id' => $producto->id])}}">
                   <i class='right fas fa-pen'></i>
                 </button>
-                <button type="button" data-func="dt-add" class="btn btn-danger btn-xs dt-add eliminarsala"
+                <button type="button" data-func="dt-add" class="btn btn-danger btn-xs dt-add eliminarProducto"
                   data-id="{{$producto->id}}" id="btn_delete_{{$producto->id}}">
                   <i class='right fas fa-trash'></i>
                 </button>

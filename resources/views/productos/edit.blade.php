@@ -60,17 +60,17 @@
                                 @else
                                 Sin imagen
                                 @endif
-                                {{--  <button type="button" id="btnMostrar" class="btn btn-primary"><i class="fas fa-plus"></i>Cambiar</button>  --}}
+                                <button type="button" id="btnMostrar" class="btn btn-primary"><i class="fas fa-plus"></i>Cambiar</button>
                                 
                                
                             </div>
                         </div>
-                        {{--  <div class="mostrar">
+                        <div class="mostrar">
                             <input type="file" class="form-control subirImg" name="foto" id="foto" accept="image/png, image/jpeg">
-                            <button type="button" id="btnCancelar" class="btn btn-danger"><i class="fas fa-xmark"></i>Cancelar</button>
-                        </div>  --}}
+                            <button type="button" id="btnCancelar" class="btn btn-danger"><i class="fas fa-times"></i>Cancelar</button>
+                        </div>
                     </div>
-                    <button class="btn btn-primary actualizarPro" type="button" id="actualizarProducto" data-id="{{$producto->id}}">Actualizar</button>
+                    <button class="btn btn-primary actualizar" type="button" id="actualizarProducto" data-id="{{$producto->id}}">Actualizar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </form>
             </div>
@@ -78,4 +78,85 @@
     </div>
 </div>
 
-<script src="{{asset('assets/js/producto.js')}}"></script>
+<script>
+    {{--  $(document).ready(function () {
+        $('.mostrar').show();
+        $('#btnMostrar').click(function () {
+            $('.mostrar').show(); 
+            $('#btnMostrar').hide();
+        });
+        
+        $('#btnCancelar').click(function () {
+            $('.mostrar').hide(); 
+            $('#btnMostrar').show();
+        });
+        
+    });  --}}
+    $(document).on('click', '.actualizar', function(event) {
+        event.preventDefault();
+        const id = $(this).data('id');
+        //console.log(id);
+        confirSave("¿Los datos capturados, son correctos?", function () {
+            // Encuentra el formulario más cercano al botón que se presionó
+            const formElement = $(this).closest('.modal').find('form')[0];
+            updateProducto(id, formElement); // Pasar el ID y el formulario como argumentos a la función
+        }.bind(this)); // Enlazar el botón que se presionó con la función de confirmación
+    });
+    
+    async function updateProducto(id,formElement) {
+        const url = $('#url').val();
+        try {
+            const formData = new FormData(formElement);
+    
+            const response = await fetch(url + '/productos/update/' + id, {
+                method: 'POST',
+                mode: 'cors',
+                redirect: 'manual',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                body: formData
+            });
+    
+            const data = await response.json();
+            switch (data.idnotificacion) {
+                case 1:
+                    Swal.fire({
+                        title: data.mensaje,
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true
+                    });
+                    // Esperar un breve período de tiempo antes de recargar la página
+                    setTimeout(function () {
+                        document.getElementById('edit-productos').reset();
+                        window.location.reload();
+                    }, 1000); // Espera 1 segundo
+    
+                    break;
+    
+                case 2:
+                case 3:
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: data.mensaje
+                    });
+                    break;
+    
+                default:
+                    Swal.fire({
+                        icon: "info",
+                        title: "Info...",
+                        text: "Error desconocido"
+                    });
+            }
+    
+        } catch (error) {
+            console.error("Error al procesar la solicitud:", error);
+        }
+    }
+
+   
+</script>

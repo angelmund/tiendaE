@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified', 'checkUserStatus'])->group(function () {
         Route::get('/productos/edit/{id}', [productosController::class, 'edit'])->name('productos.edit');
         Route::post('/productos/store', [productosController::class, 'store'])->name('productos.store');
         Route::post('/productos/update/{id}', [productosController::class, 'update'])->name('productos.update');
-        Route::post('/productos/delete/{id}', [productosController::class, 'destroy'])->name('productos.delete');
+        Route::post('/productos/delete/{id}', [productosController::class, 'eliminar'])->name('productos.delete');
     });
     
     
@@ -74,6 +74,7 @@ Route::get('/', function () {
 
 Route::get('/landing', [App\Http\Controllers\landingController::class, 'landing'])->name('landing');
 Route::get('/ASP/tienda', [App\Http\Controllers\tiendavirtualController::class, 'index'])->name('tienda');
+Route::get('/ASP/tienda/carrito', [App\Http\Controllers\tiendavirtualController::class, 'carrito'])->name('carrito');
 
 
 

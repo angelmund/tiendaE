@@ -65,7 +65,7 @@ class productosController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json([
-                'mensaje' => 'Error al guardar',
+                'mensaje' => 'Error al guardar' ,
                 'idnotificacion' => 2
             ]);
         }
@@ -111,7 +111,7 @@ class productosController extends Controller
                 $producto->foto = $request->file('foto')->storeAs('fotografias', $nuevoNombreFotoProducto, 'public');
                 $producto->save(); 
             }
-            dd($producto);
+            // dd($producto);
             DB::commit();
             return response()->json([
                 'mensaje' => 'Producto actualizado',
@@ -121,6 +121,26 @@ class productosController extends Controller
             DB::rollback();
             return response()->json([
                 'mensaje' => 'Error al actualizar',
+                'idnotificacion' => 2
+            ]);
+        }
+    }
+
+    public function eliminar($id)
+    {
+        try {
+            DB::beginTransaction();
+            $producto = Producto::find($id);
+            $producto->delete();
+            DB::commit();
+            return response()->json([
+                'mensaje' => 'Producto eliminado',
+                'idnotificacion' => 1
+            ]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json([
+                'mensaje' => 'Error al eliminar',
                 'idnotificacion' => 2
             ]);
         }
