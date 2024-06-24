@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="title">Nueva Categoría</h5>
-                <button type="button" class="btn-close dark-x" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="{{route('categorias.store')}}" method="POST" id="Form-categorias" enctype="multipart/form-data" autocomplete="off">
@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nombre">Nombre</label>
+                                <label for="nombre">Ingresa el nombre de la nueva categoría</label>
                                 <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombre" required>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="title">Editar Categoría</h5>
-                <button type="button" class="btn-close dark-x" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="" method="POST" id="form-actualizarCa" enctype="multipart/form-data" autocomplete="off">

@@ -35,7 +35,7 @@
                 margin-bottom: 1.5rem;
             }
             .alert {
-                border-radius: 50px;
+                border-radius: 1.2rem;
             }
             .block label {
                 color: #4a4a4a;
@@ -79,21 +79,32 @@
                                             <div class="form-group">
                                                 <x-input-label for="email" :value="__('Email')" />
                                                 <x-text-input id="email" class="form-control form-control-user" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                                {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
                                             </div>
                                     
+
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+
                                             <!-- Password -->
                                             <div class="form-group mt-4">
                                                 <x-input-label for="password" :value="__('Password')" />
                                                 <x-text-input id="password" class="form-control form-control-user" type="password" name="password" required autocomplete="current-password" />
-                                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                                {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
                                             </div>
                                     
                                             <!-- Remember Me -->
                                             <div class="block mt-4">
                                                 <label for="remember_me" class="inline-flex items-center">
                                                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                                                    <span class="ms-2 text-sm text-gray-600">{{ __('Recordarme me') }}</span>
+                                                    <span class="ms-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
                                                 </label>
                                             </div>
                                     

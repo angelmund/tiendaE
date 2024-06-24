@@ -4,7 +4,7 @@
 
     <button type="button" id="editButton" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
       data-bs-toggle="modal" data-bs-target="#productos" data-remote="{{route('productos.create')}}"><i
-        class="fas fa-plus"></i> Nuevo</button>
+        class="fas fa-plus"></i> Agregar Producto</button>
   </div>
 
   <div class="row">
