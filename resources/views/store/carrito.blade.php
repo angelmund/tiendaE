@@ -24,7 +24,7 @@
     <!-- Navigation-->
     <nav id="header" class="navbar navbar-expand-lg bg-body-tertiary sticky-top " data-bs-spy="scroll">
         <div class="container">
-            <a id="logo-nav" class="navbar-brand " href="{{route('carrito')}}" target="_self"><img src="images/logoASP.png" alt="" class="nav-logo"></a>
+            <a id="logo-nav" class="navbar-brand " href="{{route('carrito')}}" target="_self"><img src="{{asset('images/logoASP.png')}}" alt="" class="nav-logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -169,6 +169,7 @@
     <!-- Core theme JS-->
     <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+    <script src="{{asset('assets/js/carrito.js')}}"></script>
 
     
 

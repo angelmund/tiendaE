@@ -86,7 +86,7 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder">{{$producto->nombre}}</h5>
-                                <input type="hidden" id="id">{{$producto->id}}</input>
+                                <input class="idProducto" type="hidden" id="idProducto" value="{{$producto->id}}"></input>
                                 <!-- Product price-->
                                 {{$producto->descripcion}}
                                 <br>
@@ -99,7 +99,7 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Agregar al
+                            <div class="text-center"><a id="carrito" class="btn btn-outline-dark mt-auto btn-agregar-carrito" href="#">Agregar al
                                     carrito</a></div>
                         </div>
                     </div>
@@ -107,6 +107,7 @@
                 </div>
                 @endforeach
             </div>
+        </div>
     </section>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
