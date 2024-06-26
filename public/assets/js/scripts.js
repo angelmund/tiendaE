@@ -81,28 +81,27 @@ document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
         const nombreProducto = card.querySelector('.fw-bolder').textContent;
         const precioProducto = card.querySelector('.text-muted').textContent;
         const imagenProducto = card.querySelector('img').src;
-        const idProducto = card.querySelector('.idProducto').value; // para obtener el valor del input oculto
-        
+        const idProducto = card.querySelector('.idProducto').value; //  obtener el valor del input oculto
 
         // Agregar producto al carrito
-        agregarProductoAlCarrito(nombreProducto, precioProducto, imagenProducto, idProducto); 
+        guardarProductoEnLocalStorage(nombreProducto, precioProducto, imagenProducto, idProducto); 
     });
 });
 
-function agregarProductoAlCarrito(nombre, precio, imagen,id) {
-    const tbody = document.getElementById('tblCarrito');
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-        <td>${nombre}</td>
-        <td><img src="${imagen}" width="50" height="50"></td>
-        <td>1</td>
-        <td>${precio}</td>
-    `;
-    // tbody.appendChild(tr);
+// function agregarProductoAlCarrito(nombre, precio, imagen) {
+//     const tbody = document.getElementById('tblCarrito');
+//     const tr = document.createElement('tr');
+//     tr.innerHTML = `
+//         <td>${nombre}</td>
+//         <td><img src="${imagen}" width="50" height="50"></td>
+//         <td>1</td>
+//         <td>${precio}</td>
+//     `;
+//     // tbody.appendChild(tr);
 
-    // Guardar en localStorage
-    guardarProductoEnLocalStorage({nombre, precio, imagen,id});
-}
+//     // Guardar en localStorage
+//     guardarProductoEnLocalStorage({nombre, precio, imagen});
+// }
 
 function guardarProductoEnLocalStorage(producto) {
     let productos = JSON.parse(localStorage.getItem('productosCarrito')) || [];
