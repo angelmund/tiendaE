@@ -31,7 +31,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
-                <div class="sidebar-brand-text mx-3"> ASP <sub>Sistema</sub> </div>
+                <div class="sidebar-brand-text mx-3"> Sistema <sub>ASP</sub> </div>
             </a>
 
             <!-- Divider -->
