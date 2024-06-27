@@ -35,4 +35,20 @@ function cargarProductosDelCarrito() {
 
     // Mostrar el total acumulado en la consola o en la tabla
     console.log(totalAcumulado);
+    document.getElementById('total_pagar').textContent = totalAcumulado.toFixed(2);
+}
+
+$('#btnVaciar').click(function () {
+    console.log('Borrando productos del carrito...');
+    borrarProductosDelCarrito();
+    setTimeout(() => {
+        window.location.reload();
+    }, 1000);
+});
+function borrarProductosDelCarrito() {
+    localStorage.removeItem('productosCarrito'); // Borrar solo los productos del carrito
+    // localStorage.clear(); // si deseas borrar todo el localStorage
+    contadorCarrito = 0; // Restablecer el contador del carrito a 0
+    // document.getElementById('carrito').textContent = contadorCarrito; // Actualizar el texto del contador en la interfaz
+    cargarProductosDelCarrito(); // Recargar los productos del carrito para actualizar la interfaz
 }

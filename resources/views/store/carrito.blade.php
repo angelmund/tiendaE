@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5 ms-auto ">
-                                <h4 style="color: #e0e1dd">Total a Pagar: <span id="total_pagar">0.00</span></h4>
+                                <h4 style="color: #e0e1dd">Total a Pagar: $<span id="total_pagar">0.00</span></h4>
                                 <div class="row pb-2">
                                     <div class="col col-md-6 col-sm-12">
                                         <button class="btn btn-secondary" type="button" id="btnVaciar">

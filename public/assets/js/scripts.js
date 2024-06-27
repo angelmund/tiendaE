@@ -35,34 +35,12 @@ $(document).ready(function () {
     });
 
 
-    $('#btnVaciar').click(function () {
-        localStorage.removeItem("productos");
-        $('#tblCarrito').html('');
-        $('#total_pagar').text('0.00');
-        //se agrega el disable para  que no tenga funcionalidad
-        $("#btnContinuar").attr('disabled', 'disabled');
-    });
+  
 
     $('#btnVolverTienda').click(function () {
-        localStorage.removeItem("productos");
+        localStorage.removeItem('productosCarrito');
     });
 
-    //categoria
-    $('#abrirCategoria').click(function () {
-        $('#categorias').modal('show');
-    });
-
-    //productos
-    $('#abrirProducto').click(function () {
-        $('#productos').modal('show');
-    });
-
-    $('.eliminar').click(function (e) {
-        e.preventDefault();
-        if (confirm('Esta seguro de eliminar?')) {
-            this.submit();
-        }
-    });
 });
 
 
@@ -70,38 +48,31 @@ $(document).ready(function () {
 // Inicializar el contador del carrito
 let contadorCarrito = 0;
 
-// Seleccionar todos los botones "Agregar al carrito" y añadir evento click
 document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
     button.addEventListener('click', function () {
         contadorCarrito++;
-        document.getElementById('carrito').textContent = contadorCarrito; // Corregido aquí
+        document.getElementById('carrito').textContent = contadorCarrito; // Actualizar contador de carrito
 
         // Obtener información del producto
         const card = button.closest('.card');
         const nombreProducto = card.querySelector('.fw-bolder').textContent;
-        const precioProducto = card.querySelector('.text-muted').textContent;
+        const precioProducto = card.querySelector('.text-muted').textContent.replace('$', '').replace(',', ''); // Remover símbolo de moneda y comas
         const imagenProducto = card.querySelector('img').src;
-        const idProducto = card.querySelector('.idProducto').value; //  obtener el valor del input oculto
+        const idProducto = card.querySelector('.idProducto').value; // Obtener el valor del input oculto
 
+        // Crear objeto de producto
+        const producto = {
+            id: idProducto,
+            nombre: nombreProducto,
+            precio: parseFloat(precioProducto), // Convertir a número
+            imagen: imagenProducto
+        };
+
+        console.log(nombreProducto, precioProducto, imagenProducto, idProducto);
         // Agregar producto al carrito
-        guardarProductoEnLocalStorage(nombreProducto, precioProducto, imagenProducto, idProducto); 
+        guardarProductoEnLocalStorage(producto); 
     });
 });
-
-// function agregarProductoAlCarrito(nombre, precio, imagen) {
-//     const tbody = document.getElementById('tblCarrito');
-//     const tr = document.createElement('tr');
-//     tr.innerHTML = `
-//         <td>${nombre}</td>
-//         <td><img src="${imagen}" width="50" height="50"></td>
-//         <td>1</td>
-//         <td>${precio}</td>
-//     `;
-//     // tbody.appendChild(tr);
-
-//     // Guardar en localStorage
-//     guardarProductoEnLocalStorage({nombre, precio, imagen});
-// }
 
 function guardarProductoEnLocalStorage(producto) {
     let productos = JSON.parse(localStorage.getItem('productosCarrito')) || [];
