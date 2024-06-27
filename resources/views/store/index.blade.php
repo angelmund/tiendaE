@@ -26,39 +26,41 @@
         <span class="badge " id="carrito">0</span>
     </a>
 
-    <!-- New Nav -->
+  <!-- New Nav -->
     <nav class="navbar bg-body-tertiary fixed-top mb-5 bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="{{asset('images/logoASP.png')}}" alt="" class="nav-logo"></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('images/logoASP.png') }}" alt="" class="nav-logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end text-bg-dark navbar-dark " tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas offcanvas-end text-bg-dark navbar-dark" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Categorías</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
+                            aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" category="all">Todo</a>
+                            <a class="nav-link" href="#" data-category="all">Todo</a>
                         </li>
-                        {{--
-                        <?php
-                        $query = mysqli_query($conexion, "SELECT * FROM categorias");
-                        while ($data = mysqli_fetch_assoc($query)) { ?>
-                        <a href="#" class="nav-link" category="<?php echo $data['categoria']; ?>">
-                            <?php echo $data['categoria']; ?>
-                        </a>
-                        <?php } ?> --}}
+                        @foreach ($categorias as $categoria)
+                            <li class="nav-item">
+                                <a class="nav-link category-link" href="#" data-category="{{ $categoria->id }}">
+                                    {{ $categoria->categoria }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
+
+
+    
 
     <!-- Header-->
     <header class="bg-dark py-5">
@@ -73,11 +75,10 @@
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 @foreach ($productos as $producto)
                 <div class="col mb-5">
-                    <div class="card h-100">
+                    <div class="card h-100" style="transform: none; transition: none;">
                         <!-- Product image-->
                         @if ($producto->foto)
-                       
-                        <img src="{{ asset('/' . $producto->foto) }}" alt="...">
+                            <img src="{{ asset('/' . $producto->foto) }}" alt="...">
                         @else
                         Sin imagen
                         @endif
@@ -93,17 +94,13 @@
                                 <span
                                     class="text-muted text-decoration-line-through">${{ number_format($producto->precio_normal, 0, '.', ',') }}</span>
                                 <span>${{ number_format($producto->precio_rebajado, 0, '.', ',') }}</span>
-
-
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a id="carrito" class="btn btn-outline-dark mt-auto btn-agregar-carrito" href="#">Agregar al
-                                    carrito</a></div>
+                            <div class="text-center"><a id="carrito" class="btn btn-outline-dark mt-auto btn-agregar-carrito">Agregar al carrito</a></div>
                         </div>
                     </div>
-
                 </div>
                 @endforeach
             </div>
@@ -124,6 +121,27 @@
     <!-- Core theme JS-->
     <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+    <!-- Core theme JS-->
+    <script>
+    $(document).ready(function() {
+        $('.category-link').on('click', function(e) {
+            e.preventDefault();
+
+            var categoryId = $(this).data('category');
+
+            $('.col').each(function() {
+                var productCategory = $(this).data('category');
+
+                if (categoryId === 'all' || productCategory == categoryId.toString()) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+    </script>
+    
 </body>
 
 

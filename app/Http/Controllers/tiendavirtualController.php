@@ -14,7 +14,7 @@ class tiendavirtualController extends Controller
      
             $categorias = DB::table('categorias')->get();
             $productos = Producto::all();
-            return View::make('store.index', compact('productos'));
+            return View::make('store.index', compact('productos','categorias'));
         
     }
 

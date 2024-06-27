@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ASP Publicidad</title>
+    <title>ASP Sistema</title>
 
     <!-- Custom fonts for this template-->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -31,7 +31,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
-                <div class="sidebar-brand-text mx-3"> ASP Publicidad </div>
+                <div class="sidebar-brand-text mx-3"> ASP <sub>Sistema</sub> </div>
             </a>
 
             <!-- Divider -->
@@ -81,60 +81,35 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow justify-content-end">
 
-                    <div class="px-4 float-end">
+                    <?php $nombre = Auth::user()->name ?>
+
+                    <div class="float-end me-5">
                         <div class="row">
-                            <div class="col">
-                                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                            </div>
-                            <div class="col">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
-                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5" />
-                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                </svg>
+                            <div class="col-12">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                        </svg>
+                                        <?php echo $nombre?>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                            {{ __('Perfil') }}
+                                        </a>
+                                        <form method="POST" action="{{ route('logout') }}" style="display: none;" id="logout-form">
+                                            @csrf
+                                        </form>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            {{ __('Cerrar Sesión') }}
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-        
-                    {{-- dropdown para perfil y cerrar sesion --}}
-                    <div class="float-end">
-                        
-                        <div class="row">
-                            <div class="col-4">
-                                <x-responsive-nav-link :href="route('profile.edit')">
-                                    {{ __('Perfil') }}
-                                </x-responsive-nav-link>
-                            </div>
-                            <div class="col-8">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                
-                                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
-                                        {{ __('Cerrar Sesión') }}
-                                    </x-responsive-nav-link>
-                                </form>
-                            </div>
-                        </div>
 
-
-{{-- 
-                    <div class="mt-3 space-y-1">
-                        <x-responsive-nav-link :href="route('profile.edit')">
-                            {{ __('Perfil') }}
-                        </x-responsive-nav-link>
-        
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-        
-                            <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Cerrar Sesión') }}
-                            </x-responsive-nav-link>
-                        </form>
-                    </div> --}}
-
-                
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>                
 
                 </nav>
                 <!-- End of Topbar -->
