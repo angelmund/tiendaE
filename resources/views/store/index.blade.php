@@ -74,7 +74,7 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 @foreach ($productos as $producto)
-                <div class="col mb-5">
+                <div class="col mb-5" data-category="{{$producto->id_categoria}}">
                     <div class="card h-100" style="transform: none; transition: none;">
                         <!-- Product image-->
                         @if ($producto->foto)
@@ -129,13 +129,17 @@
 
             var categoryId = $(this).data('category');
 
+            // console.log('Clicked category ID:', categoryId); 
+
             $('.col').each(function() {
                 var productCategory = $(this).data('category');
 
+                // console.log('Product category ID:', productCategory); 
+
                 if (categoryId === 'all' || productCategory == categoryId.toString()) {
-                    $(this).show();
+                    $(this).removeClass('d-none');
                 } else {
-                    $(this).hide();
+                    $(this).addClass('d-none');
                 }
             });
         });
