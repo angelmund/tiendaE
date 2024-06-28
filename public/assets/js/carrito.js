@@ -27,13 +27,14 @@ function cargarProductosDelCarrito() {
         `;
         tbody.appendChild(tr);
         totalAcumulado += producto.subtotal;
+        
     });
 
     if(Object.keys(productosAgrupados).length > 0){
         $('#btnContinuar').prop('disabled', false);
     }
 
-    document.getElementById('total_pagar').textContent = totalAcumulado.toFixed(2);
+    document.getElementById('total_pagar').textContent = totalAcumulado.toLocaleString("en-US");
 
     // Devolver los productos agrupados y el total acumulado
     return {

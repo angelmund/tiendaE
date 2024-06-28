@@ -31,7 +31,7 @@ document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
             imagen: imagenProducto
         };
 
-       
+       console.log(producto);
         // Agregar producto al carrito
         guardarProductoEnLocalStorage(producto); 
     });

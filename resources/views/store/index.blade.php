@@ -92,8 +92,8 @@
                                 {{$producto->descripcion}}
                                 <br>
                                 <span
-                                    class="text-muted text-decoration-line-through">${{ number_format($producto->precio_normal, 0, '.', ',') }}</span>
-                                <span>${{ number_format($producto->precio_rebajado, 0, '.', ',') }}</span>
+                                    class=" text-decoration-line-through">${{ number_format($producto->precio_normal, 0, '.', ',') }}</span>
+                                <span class="text-muted">${{ number_format($producto->precio_rebajado, 0, '.', ',') }}</span>
                             </div>
                         </div>
                         <!-- Product actions-->
