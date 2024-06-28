@@ -1,42 +1,5 @@
 $(document).ready(function () {
-    let productos = [];
-    let items = {
-        id: 0
-    }
-
-    $('.navbar-nav .nav-link[category="all"]').addClass('active');
-
-    $('.nav-link').click(function () {
-        let productos = $(this).attr('category');
-
-        $('.nav-link').removeClass('active');
-        $(this).addClass('active');
-
-        $('.productos').css('transform', 'scale(0)');
-
-        function ocultar() {
-            $('.productos').hide();
-        }
-        setTimeout(ocultar, 400);
-
-        function mostrar() {
-            $('.productos[category="' + productos + '"]').show();
-            $('.productos[category="' + productos + '"]').css('transform', 'scale(1)');
-        }
-        setTimeout(mostrar, 400);
-    });
-
-    $('.nav-link[category="all"]').click(function () {
-        function mostrarTodo() {
-            $('.productos').show();
-            $('.productos').css('transform', 'scale(1)');
-        }
-        setTimeout(mostrarTodo, 400);
-    });
-
-
-  
-
+    
     $('#btnVolverTienda').click(function () {
         localStorage.removeItem('productosCarrito');
     });
@@ -68,11 +31,13 @@ document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
             imagen: imagenProducto
         };
 
-        console.log(nombreProducto, precioProducto, imagenProducto, idProducto);
+       
         // Agregar producto al carrito
         guardarProductoEnLocalStorage(producto); 
     });
 });
+
+
 
 function guardarProductoEnLocalStorage(producto) {
     let productos = JSON.parse(localStorage.getItem('productosCarrito')) || [];
@@ -83,12 +48,12 @@ function guardarProductoEnLocalStorage(producto) {
 $(".altaCliente").hide();
 // mostrarCarrito();
 
-
 $('#btnContinuar').on('click', function () {
-    // localStorage.removeItem('productos');
+    localStorage.removeItem('productosCarrito');
     $(".altaCliente").show();
     $(".tabla").hide();
 });
+
 $('#btnCancelar').on('click', function () {
     // localStorage.removeItem('productos');
     $(".altaCliente").hide();
@@ -99,10 +64,10 @@ if ($('#btnFinalizar').length > 0) {
     document.querySelector('#btnFinalizar').addEventListener("click", function (event) {
         event.preventDefault();
         const formData = new FormData(document.getElementById('Datos'));
+        
 
         // Obtener los datos del carrito desde el localStorage
-        const datosCarrito = obtenerDatosCarrito();
-        console.log(datosCarrito);
+        const datosCarrito = cargarProductosDelCarrito();
         if (!datosCarrito || datosCarrito.productos.length === 0) {
             Swal.fire({
                 title: "Error",
@@ -130,6 +95,7 @@ if ($('#btnFinalizar').length > 0) {
         // Añadir los datos del carrito al FormData
         formData.append('productos', datosCarritoJSON);
         formData.append('total', datosCarrito.total); // Añadir total al FormData
+        console.log(datosCarritoJSON);
         console.log(formData);
 
         enviar(formData);

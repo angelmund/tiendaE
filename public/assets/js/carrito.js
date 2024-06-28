@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function cargarProductosDelCarrito() {
     const productos = JSON.parse(localStorage.getItem('productosCarrito')) || [];
     const tbody = document.getElementById('tblCarrito');
-
-    // Agrupar productos por ID y sumar cantidades y subtotales
     const productosAgrupados = productos.reduce((cantipro, producto) => {
         if (!cantipro[producto.id]) {
             cantipro[producto.id] = {...producto, cantidad: 1, subtotal: producto.precio};
@@ -17,9 +15,7 @@ function cargarProductosDelCarrito() {
         return cantipro;
     }, {});
 
-    let totalAcumulado = 0; // Inicializar total acumulado
-
-    // Iterar sobre productos agrupados para crear elementos tr
+    let totalAcumulado = 0;
     Object.values(productosAgrupados).forEach(producto => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -27,19 +23,27 @@ function cargarProductosDelCarrito() {
             <td><img src="${producto.imagen}" width="50" height="50"></td>
             <td>${producto.precio}</td>
             <td>${producto.cantidad}</td>
-            <td>${producto.subtotal}</td> <!-- Corregido para mostrar el subtotal -->
+            <td>${producto.subtotal}</td>
         `;
         tbody.appendChild(tr);
-        totalAcumulado += producto.subtotal; // Sumar al total acumulado
+        totalAcumulado += producto.subtotal;
     });
 
-    // Mostrar el total acumulado en la consola o en la tabla
-    console.log(totalAcumulado);
+    if(Object.keys(productosAgrupados).length > 0){
+        $('#btnContinuar').prop('disabled', false);
+    }
+
     document.getElementById('total_pagar').textContent = totalAcumulado.toFixed(2);
+
+    // Devolver los productos agrupados y el total acumulado
+    return {
+        productos: Object.values(productosAgrupados), // Convertir el objeto de productos agrupados a un array
+        total: totalAcumulado
+    };
 }
 
 $('#btnVaciar').click(function () {
-    console.log('Borrando productos del carrito...');
+    $('#btnContinuar').prop('disabled', true); //desactiva el botón
     borrarProductosDelCarrito();
     setTimeout(() => {
         window.location.reload();
@@ -47,8 +51,8 @@ $('#btnVaciar').click(function () {
 });
 function borrarProductosDelCarrito() {
     localStorage.removeItem('productosCarrito'); // Borrar solo los productos del carrito
-    // localStorage.clear(); // si deseas borrar todo el localStorage
+    // localStorage.clear(); 
     contadorCarrito = 0; // Restablecer el contador del carrito a 0
     // document.getElementById('carrito').textContent = contadorCarrito; // Actualizar el texto del contador en la interfaz
-    cargarProductosDelCarrito(); // Recargar los productos del carrito para actualizar la interfaz
+    cargarProductosDelCarrito(); // Recargar los productos del carrito 
 }
