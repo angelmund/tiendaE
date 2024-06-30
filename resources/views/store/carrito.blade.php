@@ -172,9 +172,11 @@
     <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
     <script src="{{asset('assets/js/carrito.js')}}"></script>
-
-    
-
+    <script>
+        document.getElementById('telefono').addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 10);
+        });
+    </script>
 </body>
 
 </html>

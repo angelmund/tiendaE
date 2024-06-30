@@ -43,9 +43,9 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#" data-category="all">Todo</a>
-                        </li>
+                        </li> --}}
                         @foreach ($categorias as $categoria)
                             <li class="nav-item">
                                 <a class="nav-link category-link" href="#" data-category="{{ $categoria->id }}">
@@ -59,8 +59,6 @@
         </div>
     </nav>
 
-
-    
 
     <!-- Header-->
     <header class="bg-dark py-5">
