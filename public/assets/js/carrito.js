@@ -65,7 +65,7 @@ function enviar(formData) {
                                 window.location.reload();
                                 localStorage.removeItem('productosCarrito');
                                 // document.getElementById('carrito').textContent = contador; // Actualizar contador de carrito marca error xd
-                                location.href = 'http://localhost/TiendaEcom/public/ASP/tienda#';
+                                window.location.href = data.redirectUrl;
                             }, 1000);
                             break;
     

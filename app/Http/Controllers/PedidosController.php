@@ -83,7 +83,8 @@ class PedidosController extends Controller
 
             return response()->json([
                 'mensaje' => 'Pedido realizado con éxito',
-                'idnotificacion' => 1
+                'idnotificacion' => 1,
+                'redirectUrl' => route('tienda')
             ]);
         } catch (\Exception $e) {
             DB::rollback();
