@@ -9,24 +9,41 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class PedidosController extends Controller
 {
     public function Pedido(Request $request)
     {
         try {
-            DB::beginTransaction();
+            
 
             // Validar datos entrantes
-            $request->validate([
+            // $request->validate([
+            //     'nombre_completo' => 'required|string|max:180',
+            //     'email' => 'required|email|max:50',
+            //     'telefono' => 'required|string|max:12',
+            //     'direccion' => 'required|string|max:100',
+            //     'productos' => 'required|json',
+            //     'total' => 'required|numeric|min:0'
+            // ]);
+            $validator = Validator::make($request->all(), [
                 'nombre_completo' => 'required|string|max:180',
                 'email' => 'required|email|max:50',
-                'telefono' => 'required|string|max:10',
+                'telefono' => 'required|numeric|max:12',
                 'direccion' => 'required|string|max:100',
                 'productos' => 'required|json',
                 'total' => 'required|numeric|min:0'
-            ]);
+            ],);
 
+            if ($validator->fails()) {
+                return response()->json([
+                    'mensaje' => $validator->errors()->first(),
+                    'idnotificacion' => 3
+                ]);
+            }
+            DB::beginTransaction();
             // Decodificar los productos
             $productos = json_decode($request->input('productos'), true);
             // dd($productos);
