@@ -75,7 +75,7 @@ Route::get('/', function () {
 Route::get('/landing', [App\Http\Controllers\landingController::class, 'landing'])->name('landing');
 Route::get('/ASP/tienda', [App\Http\Controllers\tiendavirtualController::class, 'index'])->name('tienda');
 Route::get('/ASP/tienda/carrito', [App\Http\Controllers\tiendavirtualController::class, 'carrito'])->name('carrito');
-
+Route::post('/ASP/pedido/pedido', [App\Http\Controllers\PedidosController::class, 'Pedido'])->name('pedido');
 
 
 

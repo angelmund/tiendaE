@@ -19,7 +19,7 @@ document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
         // Obtener información del producto
         const card = button.closest('.card');
         const nombreProducto = card.querySelector('.fw-bolder').textContent;
-        const precioProducto = card.querySelector('.text-muted').textContent.replace('$', '').replace(',', ''); // Remover símbolo de moneda y comas
+        const precioProducto = card.querySelector('.text-muted').textContent.replace('$', '').replace(',', '');
         const imagenProducto = card.querySelector('img').src;
         const idProducto = card.querySelector('.idProducto').value; // Obtener el valor del input oculto
 
@@ -30,8 +30,6 @@ document.querySelectorAll('.btn-agregar-carrito').forEach(button => {
             precio: parseFloat(precioProducto), // Convertir a número
             imagen: imagenProducto
         };
-
-       console.log(producto);
         // Agregar producto al carrito
         guardarProductoEnLocalStorage(producto); 
     });
@@ -49,7 +47,6 @@ $(".altaCliente").hide();
 // mostrarCarrito();
 
 $('#btnContinuar').on('click', function () {
-    localStorage.removeItem('productosCarrito');
     $(".altaCliente").show();
     $(".tabla").hide();
 });
@@ -60,97 +57,3 @@ $('#btnCancelar').on('click', function () {
     $(".tabla").show();
 });
 
-if ($('#btnFinalizar').length > 0) {
-    document.querySelector('#btnFinalizar').addEventListener("click", function (event) {
-        event.preventDefault();
-        const formData = new FormData(document.getElementById('Datos'));
-        
-
-        // Obtener los datos del carrito desde el localStorage
-        const datosCarrito = cargarProductosDelCarrito();
-        if (!datosCarrito || datosCarrito.productos.length === 0) {
-            Swal.fire({
-                title: "Error",
-                text: "No hay productos en el carrito o los datos están corruptos.",
-                icon: "error"
-            });
-            return;
-        }
-        let productosContados = {};
-        res.datos.forEach(element => {
-            // Si el producto ya está en el objeto, incrementa la cantidad
-            if (productosContados[element.id]) {
-                productosContados[element.id].cantidad += 1;
-            } else {
-                // Si no, agrega el producto al objeto con cantidad inicial de 1
-                productosContados[element.id] = {
-                    ...element,
-                    cantidad: 1
-                };
-            }
-        });
-
-        const datosCarritoJSON = JSON.stringify(datosCarrito.productos);
-
-        // Añadir los datos del carrito al FormData
-        formData.append('productos', datosCarritoJSON);
-        formData.append('total', datosCarrito.total); // Añadir total al FormData
-        console.log(datosCarritoJSON);
-        console.log(formData);
-
-        enviar(formData);
-    });
-}
-
-
-
-
-function enviar(formData) {
-    Swal.fire({
-        title: "¿Desea realizar el pedido?",
-        text: "Asegúrese de que sus datos sean correctos",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Realizar pedido!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch('', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            title: "Pedido realizado",
-                            text: "Su pedido ha sido realizado con éxito",
-                            icon: "success"
-                        });
-                        setTimeout(() => {
-                            localStorage.removeItem('productos'); // Limpiar el carrito después de realizar el pedido
-                            //window.location.href = "http://localhost/tiendaDemo/index.php?page=shop";
-                        }, 3000);
-
-
-                        localStorage.removeItem('productos'); // Limpiar el carrito después de realizar el pedido
-                        console.log(data);
-                    } else {
-                        Swal.fire({
-                            title: "Error",
-                            text: data.message,
-                            icon: "error"
-                        });
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        } else {
-            Swal.fire({
-                title: "Cancelado",
-                text: "El pedido ha sido cancelado",
-                icon: "error"
-            });
-        }
-    });
-}
