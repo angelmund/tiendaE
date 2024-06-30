@@ -31,7 +31,7 @@ class PedidosController extends Controller
             $validator = Validator::make($request->all(), [
                 'nombre_completo' => 'required|string|max:180',
                 'email' => 'required|email|max:50',
-                'telefono' => 'required|numeric|max:12',
+                'telefono' => 'required|numeric|digits_between:10,12',
                 'direccion' => 'required|string|max:100',
                 'productos' => 'required|json',
                 'total' => 'required|numeric|min:0'
