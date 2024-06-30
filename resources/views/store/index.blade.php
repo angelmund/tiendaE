@@ -43,9 +43,9 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="#" data-category="all">Todo</a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="showAllProducts">Todo</a>
+                        </li>
                         @foreach ($categorias as $categoria)
                             <li class="nav-item">
                                 <a class="nav-link category-link" href="#" data-category="{{ $categoria->id }}">
@@ -143,7 +143,34 @@
         });
     });
     </script>
-    
+    <script>
+        $(document).ready(function() {
+           
+            $('.category-link').on('click', function(e) {
+                e.preventDefault();
+                var categoryId = $(this).data('category');
+                filterProducts(categoryId);
+            });
+        
+        
+            $('#showAllProducts').on('click', function(e) {
+                e.preventDefault();
+                filterProducts('all');
+            });
+        
+            function filterProducts(categoryId) {
+                $('.col').each(function() {
+                    var productCategory = $(this).data('category');
+                    if (categoryId === 'all' || productCategory == categoryId) {
+                        $(this).removeClass('d-none');
+                    } else {
+                        $(this).addClass('d-none');
+                    }
+                });
+            }
+        });
+        </script>
+        
 </body>
 
 
