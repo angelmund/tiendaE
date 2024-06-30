@@ -72,7 +72,7 @@ class PedidosController extends Controller
             DB::rollback();
 
             return response()->json([
-                'mensaje' => 'Ocurrió un error al realizar el pedido',
+                'mensaje' => 'Ocurrió un error al realizar el pedido: ' . $e->getMessage(),
                 'idnotificacion' => 2,
                 'error' => $e->getMessage()
             ]);
