@@ -60,6 +60,11 @@
                     <i class="fas fa-list"></i>
                     <span>Productos</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('pedidos.index')}}">
+                    <i class="fas fa-list"></i>
+                    <span>Pedidos</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
