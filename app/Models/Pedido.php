@@ -30,17 +30,19 @@ class Pedido extends Model
 	protected $casts = [
 		'fecha' => 'datetime',
 		'total' => 'float',
-		'id_cliente' => 'int'
+		'id_cliente' => 'int',
 	];
 
 	protected $fillable = [
 		'fecha',
 		'total',
-		'id_cliente'
+		'id_cliente',
+
 	];
 
 	public function cliente()
 	{
 		return $this->belongsTo(Cliente::class, 'id_cliente');
 	}
+
 }

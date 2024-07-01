@@ -71,6 +71,7 @@ class PedidosController extends Controller
                 $pedidoDetalle->precio = $producto['precio'];
                 $pedidoDetalle->id_producto = $producto['id'];
                 $pedidoDetalle->id_pedido = $pedido->idPedido;
+                $pedidoDetalle->idEstado = 1;
                 $pedidoDetalle->save();
 
                 // Restar la cantidad vendida del producto en la tabla productos

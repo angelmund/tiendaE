@@ -34,14 +34,16 @@ class DetallesPedido extends Model
 		'cantidad' => 'int',
 		'precio' => 'float',
 		'id_producto' => 'int',
-		'id_pedido' => 'int'
+		'id_pedido' => 'int',
+		'idEstado' => 'int',
 	];
 
 	protected $fillable = [
 		'cantidad',
 		'precio',
 		'id_producto',
-		'id_pedido'
+		'id_pedido',
+		'idEstado'
 	];
 
 	public function producto()
@@ -52,5 +54,11 @@ class DetallesPedido extends Model
 	public function pedido()
 	{
 		return $this->belongsTo(Pedido::class, 'id_pedido', 'idPedido');
+	}
+
+	
+	public function estado()
+	{
+		return $this->belongsTo(EstadoPedido::class, 'idEstado');
 	}
 }
