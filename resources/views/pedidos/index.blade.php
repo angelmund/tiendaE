@@ -55,11 +55,11 @@
               <td>{{$pedido->pedido->cliente->direccion}}</td>
               <td>
                 <button type="button" class="btn btn-success btn-xs dt-add" data-bs-toggle="modal"
-  data-bs-target="#editEstado{{$pedido->pedido->idPedido}}" data-id="{{$pedido->pedido->idPedido}}"
-  id="btn_edit_{{$pedido->pedido->idPedido}}"
-  data-remote="{{route('pedidos.edit', ['id' => $pedido->pedido->idPedido])}}">
-  <i class='fas fa-pen'></i>
-</button>
+                  data-bs-target="#editEstado{{$pedido->id_detalles_pedido}}" data-id="{{$pedido->id_detalles_pedido}}"
+                  id="btn_edit_{{$pedido->id_detalles_pedido}}"
+                  data-remote="{{route('pedidos.edit', ['id' => $pedido->id_detalles_pedido])}}">
+                  <i class='fas fa-pen'></i>
+                </button>
               </td>
 
             </tr>

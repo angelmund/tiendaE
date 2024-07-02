@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified', 'checkUserStatus'])->group(function () {
     Route::middleware('auth', 'verified')->group(function () {
         Route::get('/pedidos/tabla', [ClientesPedidosController::class, 'index'])->name('pedidos.index');
         Route::get('/pedidos/edit/{id}', [ClientesPedidosController::class, 'editar'])->name('pedidos.edit');
-        Route::post('/pedidos/update', [ClientesPedidosController::class, 'editar'])->name('pedidos.update');
+        Route::post('/pedidos/update/{id}', [ClientesPedidosController::class, 'editEstado'])->name('pedidos.update');
         
     });
     

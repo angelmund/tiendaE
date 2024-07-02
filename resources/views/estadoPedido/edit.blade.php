@@ -1,4 +1,4 @@
-<div id="editEstado{{$pedido->idPedido}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+<div id="editEstado{{$pedido->id_detalles_pedido}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
@@ -6,11 +6,10 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('pedidos.update', $pedido->idPedido) }}" method="POST" id="form-actualizarEstado">
+                <form action="" method="POST" id="form-actualizarEstado">
                     @csrf
-                    @method('PUT')
                     <input type="hidden" value="{{ url('/') }}" id="url">
-                    <input type="hidden" name="idPedido" value="{{$pedido->idPedido}}" id="id">
+                    <input type="hidden" name="idDetallePedido" value="{{$pedido->id_detalles_pedido}}" id="idDetallePedido">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
@@ -23,7 +22,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary actualizar" type="submit" id="actualizar">Actualizar</button>
+                    <button class="btn btn-primary actualizar" type="button" id="actualizar" data-id="{{$pedido->id_detalles_pedido}}">Actualizar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </form>
             </div>
@@ -32,3 +31,4 @@
 </div>
 
 
+<script src="{{asset('assets/js/detallePedidos.js')}}"></script>
