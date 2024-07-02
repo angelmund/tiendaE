@@ -6,7 +6,7 @@ use App\Http\Controllers\contadorRegistrosController;
 use App\Http\Controllers\productosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PedidosController;
 
 
 Route::middleware(['auth', 'verified', 'checkUserStatus'])->group(function () {
@@ -75,9 +75,7 @@ Route::get('/ASP/tienda', [App\Http\Controllers\tiendavirtualController::class, 
 Route::get('/ASP/tienda/carrito', [App\Http\Controllers\tiendavirtualController::class, 'carrito'])->name('carrito');
 Route::post('/ASP/pedido/pedido', [App\Http\Controllers\PedidosController::class, 'Pedido'])->name('pedido');
 
-
-
-
+Route::get('/order-confirmation/{pedido}', [PedidosController::class, 'showConfirmation'])->name('order-confirmation');
 
 
 
