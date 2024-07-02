@@ -1,7 +1,7 @@
 $('.actualizar').click(function (event) {
     event.preventDefault();
     const id = $(this).data('id');
-     console.log(id);
+    //  console.log(id);
     confirSave("¿Los datos capturados, son correctos?", function () {
         // Encuentra el formulario más cercano al botón que se presionó
         const formElement = $(this).closest('.modal').find('form')[0];
@@ -13,7 +13,7 @@ async function updateEstado(id, formElement) {
     const url = $('#url').val();
     // console.log(id);
     const formData = new FormData(formElement);
-     console.log(formData);
+    //  console.log(formData);
 
     try {
         const response = await fetch(url + '/pedidos/update/' + id, {
