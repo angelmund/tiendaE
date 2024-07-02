@@ -85,7 +85,7 @@ class PedidosController extends Controller
             return response()->json([
                 'mensaje' => 'Pedido realizado con éxito',
                 'idnotificacion' => 1,
-                'redirectUrl' => route('tienda')
+                'redirectUrl' =>  route('order-confirmation', ['pedido' => $pedido->idPedido]) // Redirigir a la página de confirmación con el ID del pedido
             ]);
         } catch (\Exception $e) {
             DB::rollback();
@@ -96,5 +96,13 @@ class PedidosController extends Controller
                 'error' => $e->getMessage()
             ]);
         }
+    }
+    public function showConfirmation($pedidoId)
+    {
+        $pedido = Pedido::findOrFail($pedidoId);
+        $detallesPedido = DetallesPedido::where('id_pedido', $pedidoId)->with('producto')->get();
+        $cliente = $pedido->cliente; // Carga el cliente asociado
+
+        return view('order.confirmation', compact('pedido', 'detallesPedido', 'cliente'));
     }
 }
