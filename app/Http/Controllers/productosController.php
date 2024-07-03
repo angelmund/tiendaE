@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -88,14 +89,14 @@ class productosController extends Controller
             $validator = Validator::make($request->all(), [
                 'nombre' => ['required', Rule::unique('productos')->ignore($id), 'max:255'],
             ], ['nombre.unique' => 'El producto ya existe']);
-
+        
             if ($validator->fails()) {
                 return response()->json([
                     'mensaje' => $validator->errors()->first(),
                     'idnotificacion' => 3
                 ]);
             }
-
+        
             DB::beginTransaction();
             $producto = Producto::find($id);
             $producto->nombre = $request->input('nombre');
@@ -105,8 +106,13 @@ class productosController extends Controller
             $producto->precio_rebajado = $request->input('p_rebajado');
             $producto->id_categoria = $request->input('categoria');
             $producto->save(); // Guardar para obtener el ID.
-
+        
             if ($request->hasFile('foto')) {
+                // Eliminar la imagen existente si hay una nueva
+                if ($producto->foto) {
+                    Storage::delete('public/' . $producto->foto);
+                }
+        
                 $nuevoNombreFotoProducto = $producto->id . "_foto_producto." . $request->file('foto')->getClientOriginalExtension();
                 $producto->foto = $request->file('foto')->storeAs('fotografias', $nuevoNombreFotoProducto, 'public');
                 $producto->save(); 
