@@ -6,11 +6,16 @@
       data-bs-toggle="modal" data-bs-target="#productos" data-remote="{{route('productos.create')}}"><i
         class="fas fa-plus"></i> Agregar Producto</button> --}}
   </div>
-
+<style>
+  #tabla th{
+    background-color: #5a5c69;
+    color: white;
+  }
+</style>
   <div class="row">
     <div class="col-md-12">
       <div class="table-responsive">
-        <table id="tabla" class="table table-hover table-bordered table-dark">
+        <table id="tabla" class="table table-hover table-bordered">
           <thead class="">
             <tr>
               <th>Número de pedido</th>
@@ -48,7 +53,18 @@
                 {{$pedido->producto->categoria->categoria}}
               </td>
               <td>${{ number_format($pedido->pedido->total, 0, '.', ',') }}</td>
-              <td> {{$pedido->estado->nombre}}</td>
+              <td>
+                <span class="badge 
+                @if ($pedido->estado->nombre == 'Proceso') 
+                  badge-primary
+                @elseif ($pedido->estado->nombre == 'Realizado') 
+                  badge-success
+                @elseif ($pedido->estado->nombre == 'Cancelado') 
+                  badge-danger
+                @endif">
+                  {{$pedido->estado->nombre}}
+                </span>
+              </td>
               <td>{{$pedido->pedido->cliente->nombre_completo}}</td>
               <td>{{$pedido->pedido->cliente->correo}}</td>
               <td>{{$pedido->pedido->cliente->telefono}}</td>
